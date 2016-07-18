@@ -1,6 +1,7 @@
 package com.github.classyex;
 
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -13,11 +14,24 @@ import static org.junit.Assert.assertThat;
  */
 public class GreetingTest {//NOPMD
 
+    private String name;
+    private Greeting greeting;
+
+    @Before
+    public void setUp(){
+        name = "xiaoming";
+        greeting = new Greeting();
+    }
+
     @Test
     public void morningGreeting(){//NOPMD
-        String name = "xiaoming";
-        Greeting greeting = new Greeting();
         assertThat("不是预期的问候语", "Good morning " + name, is(greeting.morning(name)
+        ));
+    }
+
+    @Test
+    public void eveningIsNotmorningGreet(){
+        assertThat("不是预期的问候语", "Good evening " + name, not(greeting.morning(name)
         ));
     }
 
