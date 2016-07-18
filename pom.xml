@@ -13,6 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jacoco.version>0.7.7.201606060606</jacoco.version>
+    <coveralls.version>4.0.0</coveralls.version>
   </properties>
 
   <dependencies>
@@ -26,6 +27,14 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.eluder.coveralls</groupId>
+        <artifactId>coveralls-maven-plugin</artifactId>
+        <version>${coveralls.version}</version>
+        <configuration>
+          <repoToken>03LfpsZeS4A1D8gIUQa8hp0MjdGozFA9O</repoToken>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
