@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jacoco.version>0.7.7.201606060606</jacoco.version>
   </properties>
 
   <dependencies>
@@ -22,4 +23,28 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <!-- The following exclude configuration was added because error occurred
+            when executing "mvn clean test jacoco:report coveralls:report" -->
+        <!-- [ERROR] Failed to execute goal org.eluder.coveralls:coveralls-maven-plugin:3.1.0:report
+            (default-cli) on project java-design-patterns: I/O operation failed: No source
+            found for domainapp/dom/modules/simple/QSimpleObject.java -> [Help 1] -->
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
